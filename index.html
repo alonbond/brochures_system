@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="eng">
+
+<!-- Head -->
+<head>
+	<!-- Lumx Styling -->
+	<link rel="stylesheet" href="bower_components/lumx/dist/lumx.css">
+	<link rel="stylesheet" href="bower_components/mdi/css/materialdesignicons.css">
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+	<link rel="stylesheet" href="bower_components/angular-formly-templates-lumx/dist/formlyLumx.css">
+
+	<!-- 960 Grid System -->
+	<link rel="stylesheet" href="bower_components/960_grids/960_24_col.css">
+
+	<!-- Additional stylesheet -->
+	<link rel="stylesheet" href="css/main.css">
+	<title></title>
+</head>
+
+<body ng-app="brochuresApp">
+
+	<!-- Main Container -->
+	<div class="container_24">
+		
+		<div class="tc-white-1 p+ bgc-light-blue-100">
+			<!-- Opening Paragraph-->
+			<p>This is pharmpool brochure's system demo.</p>
+
+			<!-- SECTION A // INTRO AND SETTINGS-->
+			<section class="content">
+				<div class="card tc-black-2 p+" ng-controller="introductionController">
+					<h3>Intro and Settings</h3>
+
+					<form name="form" ng-submit="onSubmit()" novalidate>
+						<formly-form model="model" fields="fields"></formly-form>
+					</form>
+			 <script type="text/ng-template" id="multiInput.html">
+		      <div>
+		        <div class="clearfix">
+		          <div class="row"
+		               style="margin-bottom:14px"
+		               ng-repeat="item in model[options.key] track by $index"
+		               ng-init="itemOptions = copyItemOptions()">
+		            <formly-field class="no-padding col-xs-10"
+		                          options="itemOptions"
+		                          model="model[options.key]"
+		                          form="form"
+		                          index="$index">
+		            </formly-field>
+		            <div class="col-xs-2" style="margin-top:6px">
+		              <a ng-click="model[options.key].splice($index, 1)">
+		                <button class="btn btn--xs btn--grey btn--raised" lx-ripple>REMOVE</button>
+		              </a>
+		            </div>
+		          </div>
+		        </div>
+		        <div>	
+		          <br />
+		          <button type="button" class="btn btn--m btn--teal btn--icon" lx-ripple ng-click="model[options.key].push('')"><i class="mdi mdi-plus"></i></button>
+		        </div>
+		      </div>
+		    </script>
+
+				</div>
+			</section>
+			<br />
+
+			<!-- SECTION B // MEDICINE DESTINY-->
+			<section class="content">
+				<div class="card tc-black-2 p+" ng-controller="medicineDestinyController">
+					<h3>Medicine Destiny</h3>
+					<formly-form model="formData" fields="formFields"></formly-form>
+				</div>
+			</section>
+			<br />
+
+		</div>
+
+	</div>
+
+	<!-- Lumx and angular scripts -->
+	<script src="bower_components/jquery/dist/jquery.js"></script>
+	<script src="bower_components/velocity/velocity.js"></script>
+	<!-- Angular Formly -->
+	<script src="js/vendor/api-check.js"></script>
+	<script src="js/vendor/angular.js"></script>
+	<script src="js/vendor/formly.js"></script>
+	<script src="bower_components/moment/min/moment-with-locales.js"></script>
+	<script src="bower_components/lumx/dist/lumx.js"></script>
+	<script src="bower_components/angular-aria/angular-aria.js"></script>
+	<script src="bower_components/angular-formly-templates-lumx/dist/formlyLumx.js"></script>
+	<script src="bower_components/angular-messages/angular-messages.js"></script>
+
+    <!-- Modules -->
+    <script src="js/app.js"></script>
+
+    <!-- Controllers -->
+    <script src="js/controllers/introductionController.js"></script>
+    <script src="js/controllers/medicineDestinyController.js"></script>
+
+    <!-- Services -->
+
+</body>
+</html>
